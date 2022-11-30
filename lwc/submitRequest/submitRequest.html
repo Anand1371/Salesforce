@@ -1,0 +1,101 @@
+<template>
+    <template if:true={isGuestUser}>
+        <lightning-modal-header label="Contact Form"></lightning-modal-header>
+        <lightning-modal-body class="slds-col">
+            <div class="main-container slds-grid slds-grid_vertical slds-gutters">
+    
+                <div class="slds-col">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                            <lightning-icon class="input-icon" icon-name="utility:user" alternative-text="username"
+                                size="xx-small"></lightning-icon>
+                            <input type="text" data-id="inputFirstName" placeholder="First Name"
+                                class="slds-input input-element" value={firstName} onchange={handleFirstNameChange}
+                                required />
+                        </div>
+                    </div>
+                </div>
+            
+            
+                <div class="slds-col">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                            <lightning-icon class="input-icon" icon-name="utility:user" alternative-text="username"
+                                size="xx-small"></lightning-icon>
+                            <input type="text" data-id="inputLastName" placeholder="Last Name"
+                                class="slds-input input-element" value={lastName} onchange={handleLastNameChange}
+                                required />
+                        </div>
+                    </div>
+                </div>
+            
+    
+                <div class="slds-col">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                            <lightning-icon class="input-icon" icon-name="utility:email" alternative-text="username"
+                                size="xx-small"></lightning-icon>
+                            <input type="text" data-id="inputEmail" placeholder="Email" class="slds-input input-element"
+                                value={email} onkeyup={handleEmailChange} required />
+                        </div>
+                    </div>
+                </div>
+            
+    
+                <div class="slds-col">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                            <lightning-icon class="input-icon" icon-name="utility:company" alternative-text="username"
+                                size="xx-small"></lightning-icon>
+                            <input type="text" data-id="inputCompanyName" placeholder="Company Name"
+                                class="slds-input input-element" value={companyName} onchange={handleCompanyNameChange} required/>
+                        </div>
+                    </div>
+                </div>
+            
+    
+                <div class="slds-col">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                            <lightning-icon class="input-icon" icon-name="utility:comments" alternative-text="username"
+                                size="xx-small"></lightning-icon>
+                            <input type="text" data-id="inputComment" placeholder="Comment"
+                                class="slds-input input-element" value={comment} onchange={handleComment} required/>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            
+        </lightning-modal-body>
+        <lightning-modal-footer>
+            <div class="slds-align_absolute-center">
+                <lightning-button variant="success" label="Submit" onclick={handleSubmitCase} class="slds-m-left_x-small"></lightning-button>
+            </div>
+        </lightning-modal-footer>
+    </template>
+
+    <template if:false={isGuestUser}>
+        <lightning-modal-header label="Contact Form"></lightning-modal-header>
+        <lightning-modal-body>
+
+            <div class="main-container slds-grid slds-grid_vertical slds-gutters">
+                <div class="slds-col">
+                    <div class="slds-form-element">
+                        <div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_left">
+                            <lightning-icon class="input-icon" icon-name="utility:comments" alternative-text="username"
+                                size="xx-small"></lightning-icon>
+                            <input type="text" data-id="inputComment" placeholder="Comment"
+                                class="slds-input input-element" value={comment} onchange={handleComment} required/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </lightning-modal-body>
+        <lightning-modal-footer>
+            <div class="slds-align_absolute-center">
+                <lightning-button variant="success" label="Submit" onclick={handleSubmitCase} class="slds-m-left_x-small"></lightning-button>
+            </div>
+        </lightning-modal-footer>
+    </template>
+</template>

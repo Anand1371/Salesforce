@@ -1,0 +1,38 @@
+.m-auto{
+  margin:auto;
+}
+
+.header_color{
+  background: #060b1b;
+  color: #7081b9;
+}
+
+.link{
+ color: #6c7a9c; 
+ font-size: 1rem;
+}
+
+.font16{
+  font-size: 1rem;
+}
+
+.nameHeading{
+  color: #6c7a9c;
+  font-size: 2.25rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.0625rem;
+  line-height: 1.25;
+}
+.roleHeading{
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+  color: #7081b9;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 600px) {
+.mobile_text_center {
+  text-align:center;
+}
+}
