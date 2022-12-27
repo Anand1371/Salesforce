@@ -1,0 +1,111 @@
+<template>
+    
+    <div class="bgcolorcls">
+        <template if:true={pageLoading}>
+            <lightning-spinner class="pageLoadingStyle" alternative-text="Loading" size="medium"></lightning-spinner>
+           
+        </template> 
+        <div class="main-container slds-grid slds-grid_vertical slds-gutters">
+
+            <div class="slds-col slds-var-p-bottom_medium ">
+                <template if:true={errorCheck}>
+                    <div class="error slds-var-p-around_x-small slds-var-p-top_small" role="alert">
+                        <span>{errorMessage}</span>
+                    </div>
+                </template>
+
+            </div>
+
+            <!-- --------------------------------------------------------------------------------- -->
+            <div class="slds-col">
+
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <lightning-input type="text" label="First Name" data-id="inputFirstName"
+                            value={firstName} onchange={handleFirstNameChange}
+                        >
+                        </lightning-input>
+                        
+                    </div>
+                </div>
+
+            </div>
+            
+            <!-- --------------------------------------------------------------------------------------- -->
+            <div class="slds-col">
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <Lightning-input type="text" label="Last Name" data-id="inputLastName"
+                             value={lastName} onchange={handleLastNameChange}
+                            required>
+                        </Lightning-input>    
+                    </div>
+                </div>
+            </div>
+            <!-- -------------------------------------------------------------------------------- -->
+
+            <div class="slds-col tooltipEmail">
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control"
+                        onmouseover={handleEmailHover}>        
+                        <Lightning-input type="text" label="Email" data-id="inputEmail"
+                            value={email} onkeyup={handleEmailChange} pattern="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+                            oninvalid={onEmailInvalid} oninput={onEmailInput} required>
+                        </Lightning-input>
+                    </div>
+                </div>
+            </div>
+
+            <!-- --------------------------------------------------------------------------------------- -->
+            <div class="slds-col">
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">
+                        <Lightning-input type="text" data-id="inputPhone" label="Phone"
+                            value={phone} onchange={handlePhoneChange}
+                            required>
+                        </Lightning-input>        
+                    </div>
+                </div>
+            </div>
+            <!-- -------------------------------------------------------------------------------- -->
+
+            <!-- Password  -->
+            <div class="slds-col">
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control">               
+                        <Lightning-input type="password" label="Create Password" data-id="inputPassword"
+                            value={password} onchange={handlePasswordChange} oninvalid={onPasswordInvalid}
+                            pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" required>
+                        </Lightning-input>                            
+                    </div>
+                </div>
+            </div>
+            <!-- ------------------------------------------------------------------------------------------------------ -->
+
+            <!-- ?confirm password and validation -->
+            <div class="slds-col">
+                <div class="slds-form-element">
+                    <div class="slds-form-element__control"> 
+                        <Lightning-input type="password" label="Confirm Password" data-id="inputConfirmPassword" 
+                            value={confirmPassword} oninvalid={onPasswordInvalid}
+                            onchange={handleConfirmPasswordChange}
+                            pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" required>
+                        </Lightning-input>
+                    </div>
+                </div>
+            </div>
+            <!-- ----------------------------------------------------------------------------------- -->
+
+            <div class="slds-col login-button">
+                <Lightning-button variant="Success" label="Sign Up" onclick={handleRegister}></Lightning-button>
+            </div>
+
+
+            <div class="slds-col">
+                <p class="text-align-center slds-var-p-around_medium">
+                    <a href="/s/login" class="sub-heading register-heading">Already have an account?</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</template>

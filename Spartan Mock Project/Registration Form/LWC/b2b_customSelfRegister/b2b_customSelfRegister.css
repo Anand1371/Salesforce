@@ -1,0 +1,80 @@
+/**
+ * @description       : Register Component CSS
+ * @author            : Anand Kumar Reddy
+ * @group             : 
+ * @last modified on  : 07-12-2022
+ * @last modified by  : Anand Kumar Reddy
+ * Modifications Log 
+ * Ver   Date         Author              Modification
+ * 1.0   07-12-2022   Anand Kumar Reddy   Initial Version
+**/
+
+body {
+  background-size:auto;    
+  /* background-image: url("/resource/loginBackground"); */
+   /* choose image from static resource */
+}
+.bgcolorcls.THIS {
+  /* background: white; */
+  background-color: white;
+}
+:host {
+  --sds-c-card-color-background: #a1d6e4;
+}
+
+.center {
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-button {
+  
+  text-align: center;
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 16px;
+  font-family: Arial;
+}
+
+.main-heading {
+
+  font-size: 20px;
+  color: rgb(14, 69, 247);
+}
+
+.sub-heading {
+
+  font-size: 14px;
+  color: white;
+}
+
+
+.error {
+
+  text-align: center;
+  word-break: break-word;
+  max-width: 20rem;
+  color: #f70505;
+}
+
+
+.slds-grid_vertical .slds-col {
+
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+.THIS.pageLoadingStyle
+{
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+
+
+
+
+
+
