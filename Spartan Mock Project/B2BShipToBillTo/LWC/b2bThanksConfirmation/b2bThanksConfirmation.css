@@ -1,0 +1,14 @@
+.form-bg {
+    background-color: rgb(242, 242, 242);
+    border-radius: 20px;
+}
+
+.txtType{
+    color: #031723 !important;
+    font-size: 32px !important;
+    font-weight: 700 !important;
+}
+
+.accValue{
+    color: #FF4500;
+}

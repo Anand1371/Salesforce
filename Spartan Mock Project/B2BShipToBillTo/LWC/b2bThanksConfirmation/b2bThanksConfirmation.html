@@ -1,0 +1,18 @@
+<template>
+    <div class="slds-p-around_medium form-bg">
+        
+            <div class="slds-align_absolute-center">
+                <lightning-formatted-text class="txtType" value="Thank you for your purchase"></lightning-formatted-text>
+            </div>
+        
+            <div class="slds-align_absolute-center">
+                <p>Your order <span class="accValue">{orderId}</span> has successfully been placed and a confirmation email has been sent to the email address below</p>
+            </div>
+        
+            <div class="slds-align_absolute-center">
+                <lightning-formatted-text value="Contact Email: "></lightning-formatted-text>
+                <lightning-formatted-text class="accValue" value={email}></lightning-formatted-text>
+            </div>
+        
+        </div>
+</template>

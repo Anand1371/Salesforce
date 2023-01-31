@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>55.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>B2B Progress Indicator</masterLabel>
+    <description>This is a simple Progress Indicator Component for Checkout Flow</description>
+    <targets>
+        <target>lightning__FlowScreen</target>
+        <target>lightningCommunity__Page</target>
+        <target>lightningCommunity__Default</target>
+        <target>lightning__AppPage</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="currentStep" type="String" label="Current Step" description="Current Step to display Progress"/>
+        </targetConfig>
+
+        <targetConfig targets="lightningCommunity__Default">
+            <property name="currentStep" type="String" label="Current Step" description="Current Step to display Progress"/>
+        </targetConfig>
+            
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,82 @@
+<template>
+
+    <div class="addTypeTitle slds-p-top_medium slds-p-bottom_medium">
+        <lightning-formatted-text value="Shipping Address">
+        </lightning-formatted-text>
+    </div>
+
+    <div class="addBody slds-p-top_small slds-p-bottom_small">
+        <template if:true={selectedAddr}>
+            <div class="slds-m-left_large addType">
+                <template if:true={selectedAddr.shipToAccountName}>
+                    <lightning-formatted-text value="Ship To"></lightning-formatted-text>
+                    <lightning-formatted-text class="accValue slds-m-left_small" value={selectedAddr.shipToAccountName}></lightning-formatted-text>
+                </template>
+                <lightning-icon icon-name="utility:chevrondown" onclick={hangleChangeAddress} size="x-small" class="slds-m-left_small changeTxt"></lightning-icon>
+                <lightning-button variant="brand" label="New" title="Primary action" 
+                    onclick={handleNewShippingAddress} class="slds-m-left_xx-small">
+                </lightning-button>
+            </div>
+    
+            <div class="slds-m-left_large addTxt">
+                <template if:true={selectedAddr.shipToContactName}>
+                    <lightning-formatted-text value={selectedAddr.shipToContactName}></lightning-formatted-text>
+                </template>
+            </div>
+    
+            <div class="slds-m-left_large addTxt">
+                <template if:true={selectedAddr.shipToAddress}>
+                    <lightning-formatted-text value={selectedAddr.shipToAddress}></lightning-formatted-text>
+                </template>
+            </div>
+        </template>
+
+        <div class="slds-m-left_large slds-m-top_large addType">
+            <lightning-formatted-text value="Delivery Instructions"></lightning-formatted-text>
+        </div>
+        
+        <lightning-input type="text" class="slds-m-horizontal_large" onchange={deliveryInstructionsHandler} placeholder="Instructions"></lightning-input>
+        
+        
+    </div>
+    
+
+
+    
+
+    <!-- modal start -->
+    <template if:true={isShowModal}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container addrModal" style="height:80%">
+            <!-- modal header start -->
+            <header class="slds-modal__header">
+                <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse" title="Close" onclick={closeModal}>
+                    <lightning-icon icon-name="utility:close"
+                    alternative-text="close"
+                    variant="inverse"
+                    size="small" ></lightning-icon>
+                    <span class="slds-assistive-text">Close</span>
+                </button>
+                <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate modalTitle">Select Shipping Address</h2>
+            </header>
+        
+            <!-- modal body start -->
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <lightning-radio-group name="radioGroup" options={options} 
+                    value={value} type="radio" onchange={getSelectedValue} class="slds-m-around_x-small">
+                </lightning-radio-group>
+            </div>
+
+            <!-- modal footer start-->
+            <footer class="slds-modal__footer">
+                <lightning-button variant="brand" label="Save" title="Save" onclick={saveCart}
+                    class="slds-m-left_x-small slds-align_absolute-center"></lightning-button>
+            </footer>
+        
+        </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+    <!-- modal end -->
+
+</template>

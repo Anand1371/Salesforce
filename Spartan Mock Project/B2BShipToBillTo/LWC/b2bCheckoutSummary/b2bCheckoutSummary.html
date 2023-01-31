@@ -1,0 +1,37 @@
+<template>
+    <lightning-layout>
+        <lightning-layout-item size="9" alignment-bump="left">
+            <lightning-layout class="slds-p-around_medium form-bg" multiple-rows>
+
+                <lightning-layout-item size="8" class="txtAlign">
+                    <lightning-formatted-text class="txtType slds-m-vertical_medium" value="Subtotal:"></lightning-formatted-text>
+                </lightning-layout-item>
+                <lightning-layout-item size="4" class="txtAlign">
+                    <lightning-formatted-number value={summaryData.TotalProductAmount} format-style="currency" currency-code="USD" currency-display-as="symbol"></lightning-formatted-number>
+                </lightning-layout-item>
+        
+                <lightning-layout-item size="8" class="txtAlign">
+                    <lightning-formatted-text class="txtType slds-m-vertical_medium" value="Estimated Shipping Costs:"></lightning-formatted-text>
+                </lightning-layout-item>
+                <lightning-layout-item size="4" class="txtAlign">
+                    <lightning-formatted-number value={summaryData.TotalChargeAmount} format-style="currency" currency-code="USD" currency-display-as="symbol"></lightning-formatted-number>
+                </lightning-layout-item>
+        
+                <lightning-layout-item size="8" class="txtAlign">
+                    <lightning-formatted-text class="txtType slds-m-vertical_medium" value="Taxes:"></lightning-formatted-text>
+                </lightning-layout-item>
+                <lightning-layout-item size="4" class="txtAlign">
+                    <lightning-formatted-number value={summaryData.TotalChargeAmount} format-style="currency" currency-code="USD" currency-display-as="symbol"></lightning-formatted-number>
+                </lightning-layout-item>
+        
+                <lightning-layout-item size="8" class="slds-border_top txtAlign">
+                    <lightning-formatted-text class="slds-m-vertical_medium totalTxtColor" value="*TOTAL:"></lightning-formatted-text>
+                </lightning-layout-item>
+                <lightning-layout-item size="4" class="slds-border_top txtAlign">
+                    <lightning-formatted-number class="txtColor" value={summaryData.GrandTotalAmount} format-style="currency" currency-code="USD" currency-display-as="symbol"></lightning-formatted-number>
+                </lightning-layout-item>    
+                
+            </lightning-layout>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

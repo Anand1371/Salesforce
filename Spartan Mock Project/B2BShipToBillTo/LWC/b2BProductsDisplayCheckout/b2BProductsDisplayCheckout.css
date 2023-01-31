@@ -1,0 +1,11 @@
+.form-bg {
+    background-color: rgb(242, 242, 242);
+    border-radius: 20px;
+}
+
+
+.headingTxt{
+    color: #031723 !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+}

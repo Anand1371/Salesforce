@@ -1,0 +1,60 @@
+<template>
+    <div class="addTypeTitle slds-p-top_medium slds-p-around_small slds-p-bottom_medium">
+        <lightning-formatted-text value="General Information">
+        </lightning-formatted-text>
+    </div>
+
+    <lightning-layout class="slds-p-around_small">
+        <lightning-layout-item size="3" class="slds-p-around_large form-bg" alignment-bump="right">
+            <template if:true={selectedBuyerDetails}>
+                <div class="addType slds-p-bottom_medium">
+                    <lightning-formatted-text value="Buyer Information"></lightning-formatted-text>
+                </div>
+                <div class="addTxt">
+                    <lightning-formatted-text value={selectedBuyerDetails.contactName}></lightning-formatted-text>
+                </div>
+                <div class="addTxt">
+                    <lightning-formatted-text value={selectedBuyerDetails.phone}></lightning-formatted-text>
+                </div>
+                <div class="addTxt">
+                    <lightning-formatted-text value={selectedBuyerDetails.email}></lightning-formatted-text>
+                </div>
+            </template>
+        </lightning-layout-item>
+        <lightning-layout-item size="3" class="slds-p-around_large form-bg" alignment-bump="center">
+            <template if:true={selectedShippingAddress}>
+                <div class="addType slds-p-bottom_medium">
+                    <lightning-formatted-text value="Shipping Address"></lightning-formatted-text>
+                </div>
+                <div class="addTxt">
+                    <template if:true={selectedBuyerDetails.contactName}>
+                        <lightning-formatted-text value={selectedBuyerDetails.contactName}></lightning-formatted-text>
+                    </template>
+                </div>
+                <div class="addTxt">
+                    <template if:true={selectedShippingAddress.shipToAddress}>
+                        <lightning-formatted-text value={selectedShippingAddress.shipToAddress}></lightning-formatted-text>
+                    </template>
+                </div>
+            </template>
+        </lightning-layout-item>
+        <lightning-layout-item size="3" class="slds-p-around_large form-bg" alignment-bump="left">
+            <template if:true={selectedBillingAddress}>
+                <div class="addType slds-p-bottom_medium">
+                    <lightning-formatted-text value="Billing Address"></lightning-formatted-text>
+                </div>
+                <div class="addTxt">
+                    <template if:true={selectedBuyerDetails.contactName}>
+                        <lightning-formatted-text value={selectedBuyerDetails.contactName}></lightning-formatted-text>
+                    </template>
+                </div>
+        
+                <div class="addTxt">
+                    <template if:true={selectedBillingAddress.billToAddress}>
+                        <lightning-formatted-text value={selectedBillingAddress.billToAddress}></lightning-formatted-text>
+                    </template>
+                </div>
+            </template>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

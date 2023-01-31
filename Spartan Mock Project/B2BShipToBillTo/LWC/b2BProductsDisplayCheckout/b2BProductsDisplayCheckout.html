@@ -1,0 +1,59 @@
+<template>
+  <lightning-layout multiple-rows class="slds-p-around_small slds-m-bottom_medium form-bg">
+
+    <lightning-layout-item size="12" class="slds-p-around_medium headingTxt">
+
+      <lightning-layout>
+        <lightning-layout-item size="4">
+          <lightning-formatted-text value="Product Name"></lightning-formatted-text>
+        </lightning-layout-item>
+        <lightning-layout-item size="2">
+          <lightning-formatted-text value="Product Sku"></lightning-formatted-text>
+        </lightning-layout-item>
+        <lightning-layout-item size="2">
+          <lightning-formatted-text value="Quantity"></lightning-formatted-text>
+        </lightning-layout-item>
+        <lightning-layout-item size="2">
+          <lightning-formatted-text value="Unit Price"></lightning-formatted-text>
+        </lightning-layout-item>
+        <lightning-layout-item size="2">
+          <lightning-formatted-text value="Total Price"></lightning-formatted-text>
+        </lightning-layout-item>
+      </lightning-layout>
+      
+    </lightning-layout-item>
+    
+    <lightning-layout-item size="12" class="slds-p-around_medium slds-border_top">
+
+      <template for:each={products} for:item="product">
+        <lightning-layout key={product.Sku}>
+          <lightning-layout-item size="4">
+            <lightning-formatted-text value={product.Name}></lightning-formatted-text>
+          </lightning-layout-item>
+          <template if:true={product.Sku}>
+            <lightning-layout-item size="2">
+              <lightning-formatted-text value={product.Sku}></lightning-formatted-text>
+            </lightning-layout-item>
+          </template>
+          <template if:false={product.Sku}>
+            <lightning-layout-item size="2">
+              <lightning-formatted-text value={product.StockKeepingUnit}></lightning-formatted-text>
+            </lightning-layout-item>
+          </template>
+          <lightning-layout-item size="2">
+            <lightning-formatted-number value={product.Quantity}></lightning-formatted-number>
+          </lightning-layout-item>
+          <lightning-layout-item size="2">
+            <lightning-formatted-number value={product.ListPrice} format-style="currency" currency-code="USD" currency-display-as="symbol"></lightning-formatted-number>
+          </lightning-layout-item>
+          <lightning-layout-item size="2">
+            <lightning-formatted-number value={product.TotalPrice} format-style="currency" currency-code="USD" currency-display-as="symbol"></lightning-formatted-number>
+          </lightning-layout-item>
+        </lightning-layout>
+      </template>
+
+    </lightning-layout-item>
+
+  </lightning-layout>
+    
+</template>

@@ -1,0 +1,45 @@
+<template>
+    <lightning-modal-header label="New Shipping Address"></lightning-modal-header>
+    <lightning-modal-body>
+        <div class="slds-box slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none">
+            <lightning-layout multiple-rows>
+                
+                <lightning-layout-item size="12" padding="around-small">               
+                    <lightning-input type="text" label="Name" onchange={nameHandler}></lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="12" padding="around-small">
+                    <lightning-textarea label="Street" onchange={streetHandler}></lightning-textarea>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="6" padding="around-small">               
+                    <lightning-input type="text" label="City" onchange={cityHandler}></lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="text" label="State/Province" onchange={stateHandler}></lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="text" label="Zip/PostalCode" onchange={postalCodeHandler}></lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="text" label="Country" onchange={countryHandler}></lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="checkbox" label="Mark this my default address" onchange={isDefaultHandler}></lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item size="6" padding="around-small">
+                    <lightning-input type="checkbox" label="Save for address book" onchange={isAddressForFutureUseHandler}></lightning-input>
+                </lightning-layout-item>
+
+            </lightning-layout>
+        </div>
+    </lightning-modal-body>
+    <lightning-modal-footer>
+        <lightning-button variant="brand" label="Save" class="slds-align_absolute-center" onclick={handleSave}></lightning-button>
+    </lightning-modal-footer>
+</template>

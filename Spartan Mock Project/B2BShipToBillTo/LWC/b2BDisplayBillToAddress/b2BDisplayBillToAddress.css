@@ -1,0 +1,29 @@
+
+.form-bg {
+    background-color: rgb(242, 242, 242);
+    border-radius: 20px;
+    width: 450px;
+    height: 200px;
+    top: 399px;
+    left: 535px;
+}
+
+.addTypeTitle{
+    color: #031723 !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+}
+
+.addType{
+    color: #031723 !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    max-width: 300px !important;
+}
+
+.addTxt{
+    color: #031723 !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    max-width: 300px !important;
+}
