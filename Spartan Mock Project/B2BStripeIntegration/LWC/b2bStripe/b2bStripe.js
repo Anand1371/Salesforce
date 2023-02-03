@@ -1,13 +1,4 @@
-/**
- * @description       :
- * @author            : Abhishek
- * @group             : RafterOne
- * @last modified on  : 01-13-2023
- * @last modified by  : Abhishek
- * Modifications Log
- * Ver   Date         Author     Modification
- * 1.0   01-13-2023   Abhishek   Initial Version
-**/
+
 import { LightningElement,api,wire } from 'lwc';
 import getPaymentInfo from '@salesforce/apex/B2BPaymentController.getPaymentInfo';
 import { NavigationMixin } from 'lightning/navigation';
