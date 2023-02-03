@@ -1,13 +1,4 @@
-/**
- * @description       : 
- * @author            : Abhishek
- * @group             : RafterOne
- * @last modified on  : 01-13-2023
- * @last modified by  : Abhishek 
- * Modifications Log
- * Ver   Date         Author     Modification
- * 1.0   01-13-2023   Abhishek   Initial Version
-**/
+
 public with sharing class B2BStripeModel {
     @auraEnabled public String Id; //returned id from Sripe - token or customer id based on object
     @auraEnabled public String transactionObject; //charge or customer
