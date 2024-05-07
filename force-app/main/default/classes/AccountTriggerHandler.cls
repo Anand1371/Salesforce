@@ -11,4 +11,34 @@ public class AccountTriggerHandler {
             }
         }
     }
+    
+    //When an account inserts and CopyBillingToShipping (Custom Field) checkbox is checked then automatically copy account billing address into account shipping address.
+    public static void populateShippingAddress(List<Account> accts){
+        for(Account acc : accts)
+        {
+            if(acc.CopyBillingToShipping__c)
+            {
+                if(acc.BillingStreet != null)
+                {
+                    acc.ShippingStreet = acc.BillingStreet;
+                }
+                if(acc.BillingState != null)
+                {
+                    acc.ShippingState = acc.BillingState;
+                }
+                if(acc.BillingCity != null)
+                {
+                    acc.ShippingCity = acc.BillingCity;
+                }
+                if(acc.BillingCountry != null)
+                {
+                    acc.ShippingCountry = acc.BillingCountry;
+                }
+                if(acc.BillingPostalCode != null)
+                {
+                    acc.ShippingPostalCode = acc.BillingPostalCode;
+                }
+            }
+        }
+    }
 }
