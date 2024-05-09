@@ -41,4 +41,22 @@ public class AccountTriggerHandler {
             }
         }
     }
+
+    //Create a related Contact when an Account is created.
+    public static void createContact(List<Account> accts)
+    {
+        List<Contact> conts = new List<Contact>();
+        for(Account acc : accts){
+            Contact con = new Contact();
+            con.FirstName = acc.Name + 'FN';
+            con.LastName = acc.Name + 'LN';
+            con.AccountId = acc.Id;
+            conts.add(con);
+        }
+
+        if(!conts.isEmpty())
+        {
+            insert conts;
+        }
+    }
 }
