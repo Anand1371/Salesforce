@@ -1,4 +1,6 @@
 public class CaseTriggerHandler {
+
+    //When a Case is created on any Account, put the latest case number on the Account in the ‘Latest Case Number’ field.
     public static void updateCaseNumberOnAccount(List<Case> cases) {
         List<Account> accts = new List<Account>();
         for(Case cas : cases)
