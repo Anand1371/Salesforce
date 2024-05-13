@@ -10,4 +10,26 @@ public class OpportunityTriggerHandler {
             }
         }
     }
+
+    //Account records should have a field named ‘Recent Opportunity Amount’. It should contain the opportunity amount of the latest created opportunity on account.
+    public static void updateAmountOnAccount(List<Opportunity> opps)
+    {
+        List<Account> accts = new List<Account>();
+        for(Opportunity opp : opps)
+        {
+            if(opp.Amount != null)
+            {
+                Account acc = new Account();
+                acc.Id = opp.AccountId;
+                acc.Recent_Opportunity_Amount__c = opp.Amount;
+
+                accts.add(acc);
+            }
+
+            if(!accts.isEmpty())
+            {
+                update accts;
+            }
+        }
+    }
 }

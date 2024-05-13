@@ -17,6 +17,9 @@ trigger AccountTrigger on Account (before insert, after insert) {
         {
             //Create a related Contact when an Account is created.
             AccountTriggerHandler.createContact(Trigger.New);
+
+            //Create a related Opportunity when an Account is created.
+            AccountTriggerHandler.createOpportunity(Trigger.New);
         }
     }
 }
