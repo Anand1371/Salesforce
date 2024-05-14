@@ -78,4 +78,60 @@ public class AccountTriggerHandler {
             insert opps;
         }
     }
+
+    //On Account create two checkbox fields labeled as Contact and Opportunity.
+    //Now when a new Account record is created and if a particular Contact or Opportunity checkbox is checked then create that related record. 
+    //Also Opportunity record should be created only if the Account record Active picklist is populated with a Yes.
+    public static void createContactOpportunity(List<Account> accts)
+    {
+        List<Contact> conts = new List<Contact>();
+        List<Opportunity> opps = new List<Opportunity>();
+        for(Account acc : accts)
+        {
+            if(acc.Contact__c)
+            {
+                Contact con = new Contact();
+                con.FirstName = acc.Name + 'FN';
+                con.LastName = acc.Name + 'LN';
+                con.AccountId = acc.Id;
+
+                conts.add(con);
+            }
+
+            if(acc.Opportunity__c && acc.Active__c == 'Yes')
+            {
+                Opportunity opp = new Opportunity();
+                opp.Name = acc.Name + ' Opportunity';
+                opp.AccountId = acc.Id;
+                opp.StageName = 'Prospecting';
+                opp.CloseDate = Date.today();
+
+                opps.add(opp);
+            }
+        }
+
+        if(!conts.isEmpty())
+        {
+            insert conts;
+        }
+
+        if(!opps.isEmpty())
+        {
+            insert opps;
+        }
+    }
+
+    //If the Account phone is updated then populate below message in description.
+    //Description = Phone is Updated! Old Value : XXX & New Value : XXX
+    public static void updateDescription(List<Account> newAccts, Map<Id, Account> oldAccts)
+    {
+        for(Account acc : newAccts)
+        {
+            String oldPhone = oldAccts.get(acc.Id).Phone != null ? oldAccts.get(acc.Id).Phone : null;
+            if(oldPhone != acc.Phone)
+            {
+                acc.Description = 'Phone is Updated! Old Value : '+oldPhone+' & New Value : '+acc.Phone;
+            }
+        }
+    }
 }
