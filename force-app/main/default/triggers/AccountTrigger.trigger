@@ -1,5 +1,5 @@
 trigger AccountTrigger on Account (before insert, after insert) {
-	if(Trigger.isBefore && Trigger.isInsert)
+	if(Trigger.isBefore)
     {
         if(Trigger.isInsert)
         {
@@ -20,6 +20,11 @@ trigger AccountTrigger on Account (before insert, after insert) {
 
             //Create a related Opportunity when an Account is created.
             AccountTriggerHandler.createOpportunity(Trigger.New);
+
+            //On Account create two checkbox fields labeled as Contact and Opportunity.
+            //Now when a new Account record is created and if a particular Contact or Opportunity checkbox is checked then create that related record. 
+            //Also Opportunity record should be created only if the Account record Active picklist is populated with a Yes.
+            AccountTriggerHandler.createContactOpportunity(Trigger.New);
         }
     }
 }
