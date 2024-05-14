@@ -1,4 +1,4 @@
-trigger AccountTrigger on Account (before insert, after insert) {
+trigger AccountTrigger on Account (before insert, after insert, before update) {
 	if(Trigger.isBefore)
     {
         if(Trigger.isInsert)
@@ -8,6 +8,13 @@ trigger AccountTrigger on Account (before insert, after insert) {
             
             //When an account inserts and CopyBillingToShipping (Custom Field) checkbox is checked then automatically copy account billing address into account shipping address.
             AccountTriggerHandler.populateShippingAddress(Trigger.new);
+        }
+
+        if(Trigger.isUpdate)
+        {
+            //If the Account phone is updated then populate below message in description.
+            //Description = Phone is Updated! Old Value : XXX & New Value : XXX
+            AccountTriggerHandler.updateDescription(Trigger.new, Trigger.oldMap);
         }
     }
 

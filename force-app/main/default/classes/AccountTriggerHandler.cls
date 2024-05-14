@@ -120,4 +120,18 @@ public class AccountTriggerHandler {
             insert opps;
         }
     }
+
+    //If the Account phone is updated then populate below message in description.
+    //Description = Phone is Updated! Old Value : XXX & New Value : XXX
+    public static void updateDescription(List<Account> newAccts, Map<Id, Account> oldAccts)
+    {
+        for(Account acc : newAccts)
+        {
+            String oldPhone = oldAccts.get(acc.Id).Phone != null ? oldAccts.get(acc.Id).Phone : null;
+            if(oldPhone != acc.Phone)
+            {
+                acc.Description = 'Phone is Updated! Old Value : '+oldPhone+' & New Value : '+acc.Phone;
+            }
+        }
+    }
 }
