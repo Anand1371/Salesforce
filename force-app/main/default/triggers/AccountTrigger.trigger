@@ -1,4 +1,4 @@
-trigger AccountTrigger on Account (before insert, after insert, before update) {
+trigger AccountTrigger on Account (before insert, after insert, before update, after update) {
 	if(Trigger.isBefore)
     {
         if(Trigger.isInsert)
@@ -32,6 +32,12 @@ trigger AccountTrigger on Account (before insert, after insert, before update) {
             //Now when a new Account record is created and if a particular Contact or Opportunity checkbox is checked then create that related record. 
             //Also Opportunity record should be created only if the Account record Active picklist is populated with a Yes.
             AccountTriggerHandler.createContactOpportunity(Trigger.New);
+        }
+
+        if(Trigger.isUpdate)
+        {
+            //If the Account phone is updated then populate the phone number on all related Contacts (Home Phone field). [Using Map]
+            AccountTriggerHandler.updatePhoneOnRelatedontacts(Trigger.new, Trigger.oldMap);
         }
     }
 }
