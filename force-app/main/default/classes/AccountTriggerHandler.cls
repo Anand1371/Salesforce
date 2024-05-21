@@ -134,4 +134,30 @@ public class AccountTriggerHandler {
             }
         }
     }
+
+    //If the Account phone is updated then populate the phone number on all related Contacts (Home Phone field). [Using Map]
+    public static void updatePhoneOnRelatedontacts(List<Account> accts, Map<Id, Account> oldAcctsMap)
+    {
+        Map<Id, Account> eligibleAcctsToUpdate = new Map<Id, Account>();
+
+        for(Account acc : accts)
+        {
+            if(acc.Phone != oldAcctsMap.get(acc.Id).Phone)
+            {
+                eligibleAcctsToUpdate.put(acc.Id, acc);
+            }
+        }
+
+        List<Contact> conts = [SELECT Id, HomePhone, AccountId FROM Contact WHERE AccountId IN :eligibleAcctsToUpdate.keySet()];
+
+        for(Contact con : conts)
+        {
+            con.HomePhone = eligibleAcctsToUpdate.get(con.AccountId).Phone;
+        }
+
+        if(!conts.isEmpty())
+        {
+            update conts;
+        }
+    }
 }
