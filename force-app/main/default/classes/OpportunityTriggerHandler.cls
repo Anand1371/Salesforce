@@ -32,4 +32,29 @@ public class OpportunityTriggerHandler {
             }
         }
     }
+
+    //When a Opportunity Stage (field) is changed, create a Task record on Opportunity and assign it to Logged In User/Opportunity Owner / Any User
+    public static void createTask(List<Opportunity> opps, Map<Id, Opportunity> oldOppsMap)
+    {
+        List<Task> taskList = new List<Task>();
+        for(Opportunity opp : opps)
+        {
+            if(opp.StageName != oldOppsMap.get(opp.Id).StageName)
+            {
+                Task task = new Task();
+                task.WhatId = opp.Id;
+                task.Subject = 'Email';
+                task.Priority = 'Normal';
+                task.status = 'Not Started';
+                task.OwnerId = UserInfo.getUserId();
+
+                taskList.add(task);
+            }
+        }
+
+        if(!taskList.isEmpty())
+        {
+            insert taskList;
+        }
+    }
 }
