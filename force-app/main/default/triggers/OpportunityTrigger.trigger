@@ -1,4 +1,4 @@
-trigger OpportunityTrigger on Opportunity (before insert, after insert) {
+trigger OpportunityTrigger on Opportunity (before insert, after insert, after update) {
 	if(Trigger.isBefore)
     {
         if(Trigger.isInsert)
@@ -14,6 +14,12 @@ trigger OpportunityTrigger on Opportunity (before insert, after insert) {
         {
             //Account records should have a field named ‘Recent Opportunity Amount’. It should contain the opportunity amount of the latest created opportunity on account.
             OpportunityTriggerHandler.updateAmountOnAccount(Trigger.new);
+        }
+
+        if(Trigger.isUpdate)
+        {
+            //When a Opportunity Stage (field) is changed, create a Task record on Opportunity and assign it to Logged In User/Opportunity Owner / Any User
+            OpportunityTriggerHandler.createTask(Trigger.new, Trigger.oldMap);
         }
     }
 }
