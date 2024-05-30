@@ -160,4 +160,35 @@ public class AccountTriggerHandler {
             update conts;
         }
     }
+
+    //Write a trigger on Account when Account Active field is updated from ‘Yes’ to ‘No’ then check all opportunities associated with the account. 
+    //Update all Opportunities Stage to close lost if stage not equal to close won.
+    public static void updateOppStage(List<Account> accts, Map<Id, Account> oldAccMap)
+    {
+        Set<String> accIds = new Set<String>();
+        List<Opportunity> oppToUpdate = new List<Opportunity>();
+        for(Account acc : accts)
+        {
+            if(acc.Active__c == 'No' && acc.Active__c != oldAccMap.get(acc.Id).Active__c)
+            {
+                accIds.add(acc.Id);
+            }
+        }
+
+        List<Opportunity> opps = [SELECT Id, AccountId, StageName FROM Opportunity WHERE AccountId IN :accIds];
+
+        for(Opportunity opp : opps)
+        {
+            if(opp.StageName != 'Closed Won' && opp.StageName != 'Closed Lost')
+            {
+                opp.StageName = 'Closed Lost';
+                oppToUpdate.add(opp);
+            }
+        }
+
+        if(!oppToUpdate.isEmpty())
+        {
+            update oppToUpdate;
+        }
+    }
 }

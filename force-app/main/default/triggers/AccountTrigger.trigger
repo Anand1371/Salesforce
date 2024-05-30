@@ -38,6 +38,10 @@ trigger AccountTrigger on Account (before insert, after insert, before update, a
         {
             //If the Account phone is updated then populate the phone number on all related Contacts (Home Phone field). [Using Map]
             AccountTriggerHandler.updatePhoneOnRelatedontacts(Trigger.new, Trigger.oldMap);
+
+            //Write a trigger on Account when Account Active field is updated from ‘Yes’ to ‘No’ then check all opportunities associated with the account. 
+            //Update all Opportunities Stage to close lost if stage not equal to close won.
+            AccountTriggerHandler.updateOppStage(Trigger.new, Trigger.oldMap);
         }
     }
 }
